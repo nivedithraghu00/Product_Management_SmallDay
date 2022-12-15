@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task List</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .select_product{   
+        width: 111px ;
+        height: 32px;
+
+    }</style>
+  
+</head>
+<body>   
+    <center><h1>Batch_List</h1></center>
+    <button><a href="http://localhost:8000/products_list/">Back</a></button>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+    <tr>
+        <th>Batch_ID</th>
+        <th>Batch_Qty</th>
+        <th>Batch_Date</th>
+        <th>Product</th>
+        <th>Model_Name</th>
+
+
+        
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for x in product_list %}
+    <tr>
+    <td>{{ x.0}}</td>
+    <td>{{ x.1 }}</td>
+    <td>{{ x.2}}</td>
+    <td>{{ x.6 }}</td>
+    <td>{{x.5}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <form action="batchrecord/" method="post">
+        {% csrf_token %}
+        Batch_Qty:<br>
+        <input name="batch_Qty">
+        <br><br>
+        Batch_Date:<br>
+        <input name="batch_Date" type="date" data-date-format="YYYY/MM/DD" ><br><br>
+       
+        Product_ID:<br>
+        
+    <select name="product_id_id" class="select_product" >
+        {% for x in product %}
+        <option value={{x.product_id}}>{{x.product_id}}</option>
+        {% endfor %}
+    
+    </select>
+        
+        <br><br>
+        <input type="submit" value="Submit" >
+        </form>
+        
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task List</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>   
+    <center><h1>product_list</h1></center>
+    <button><a href="http://localhost:8000/link/">HOME</a></button>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Model Name </th>
+        <th>Price</th>
+        <th>Warranty</th>
+    </tr>
+</thead>
+{% for x in product_list%}
+    <tr>
+    <td>{{ x.product_id }}</td>
+    <td>{{ x.product_name }}</td>
+    <td>{{ x.model_name }}</td>
+    <td>{{ x.price }}</td>
+    <td>{{ x.warranty }} year</td>
+    </tr>
+    {% endfor %}
+
+
+   
+    </table>
+
+
+
+    </form>
+
+
+    <form action="addrecord/" method="post">
+        {% csrf_token %}
+        Product ID:<br>
+        <input name="product_id">
+        <br><br>
+        Product Name:<br>
+        <input name="product_name">
+        <br><br>
+        Model Name:<br>
+        <input name="model_name">
+        <br><bv>
+        Pric:<br>
+        <input name="price">
+        <br><bv>
+        Warranty:<br>
+        <input name="warranty">
+   
+          <br><br>
+        <br><br>
+        <input type="submit" value="Submit">
+        </form>
+        
+</body>
+</html>
